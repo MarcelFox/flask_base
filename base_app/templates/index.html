@@ -1,0 +1,17 @@
+<html>
+<head>
+  <!-- Jinja2 condition -->
+  {% if title %}
+  <title>{{ title }}</title>
+  {% else %}
+  <title>Base_App</title>
+  {% endif %}
+
+</head>
+ 
+<body>
+  <h2>{{ hello }}</h2>
+  <!-- block for inherit templates -->
+  {% block content %}{% endblock %}
+</body>
+</html>
