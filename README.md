@@ -23,7 +23,7 @@
 
 #### Don't worry if for some reason you do not provide one of these, the application will inform you about. To set up these, you have to add the following into *postactivate* file of your virtualenv:
 
-`/home/$USER/.virtualenv/venv_name/post/bin/postactivate:`
+`$HOME/.virtualenvs/venv_name/post/bin/postactivate:`
 
 ```
 export FLASK_APP='$HOME/flask_base/run.py'
@@ -34,7 +34,7 @@ export DATABASE_URL='postgresql://USER:PASS@localhost/DATABASE'
 <br />
 
 #### And remember to unset these variables when you *deactivate* from your virtualenv:
-`/home/$USER/.virtualenv/venv_name/post/bin/postdeactivate:`
+`$HOME/.virtualenvs/venv_name/post/bin/postdeactivate:`
 ```
 unset FLASK_APP
 unset SECRET_KEY
