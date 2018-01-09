@@ -8,6 +8,7 @@ class Profile(db.Model):
     description = db.Column (db.Text, nullable=False)
     email = db.Column(db.String(120), unique=True, nullable=False)
 
+
 # Create Tables into our database:
 db.create_all()
 
