@@ -6,10 +6,11 @@
   <form action="" method="post" name="login">
       {{ form.hidden_tag() }}
       <p>
-          Username or Email:<br>
-          {{ form.openid(size=80) }}<br>
+          Username:<br>
+          {{ form.username(size=30) }}<br>
       </p>
-      <p>{{ form.remember_me }} Remember Me</p>
+          Password:<br>
+      <p>{{ form.password(size=30) }}</p>
       <p><input type="submit" value="Sign In"></p>
   </form>
 {% endblock %}
