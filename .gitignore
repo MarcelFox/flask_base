@@ -1,3 +1,3 @@
+*.pyc
 __pycache__/
 base_app/__pycache__/
-test_script.py
