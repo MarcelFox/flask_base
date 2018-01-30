@@ -8,9 +8,19 @@
       <p>
           Username:<br>
           {{ form.username(size=30) }}<br>
+          <ul>
+          {% for error in form.username.errors %}
+              <li>{{ error }}
+          {% endfor %}
+          </ul>
       </p>
           Password:<br>
       <p>{{ form.password(size=30) }}</p>
+          <ul>
+          {% for error in form.password.errors %}
+              <li>{{ error }}
+          {% endfor %}
+          </ul>
       <p><input type="submit" value="Sign In"></p>
   </form>
 {% endblock %}

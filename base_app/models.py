@@ -40,4 +40,4 @@ q_var = Profile.query.filter_by(username='Tester').first()
 # q_var.username, q_var.password ...
 #
 # For instance, you can check if the password is correct by using:
-# check_password_hash(q_var.username, '1q2w3e4r')
+# check_password_hash(q_var.password, '1q2w3e4r')
