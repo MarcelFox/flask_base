@@ -1,5 +1,6 @@
 <html>
 <head>
+  <link rel="stylesheet" type="text/css" href="/static/styles.css">
   <!-- Jinja2 condition -->
   {% if title %}
   <title>{{ title }}</title>
@@ -10,7 +11,14 @@
 </head>
  
 <body>
-  <h2>{{ hello }}</h2>
+  <div class=navbar>
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/login">Login</a></li>
+    </ul>
+  </div>
+  <br>
+  <p><h2>{{ hello }}</h2></p>
   <!-- block for inherit templates -->
   {% block content %}{% endblock %}
 </body>
