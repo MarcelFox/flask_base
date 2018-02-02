@@ -10,7 +10,7 @@
           {{ form.username(size=30) }}<br>
           <ul>
           {% for error in form.username.errors %}
-              <li>{{ error }}
+              <li>{{ error }}</li>
           {% endfor %}
           </ul>
       </p>
@@ -18,9 +18,16 @@
       <p>{{ form.password(size=30) }}</p>
           <ul>
           {% for error in form.password.errors %}
-              <li>{{ error }}
+              <li>{{ error }}</li>
           {% endfor %}
           </ul>
-      <p><input type="submit" value="Sign In"></p>
+      <p>Remember me {{ form.remember }}</p><br>
+      <p>{{ form.submit }}</p>
+      <p>{{ form.recaptcha }}</p>
+        <ul>
+        {% if form.recaptcha.errors %}
+            <li>Are you a robot?</li>
+        {% endif %}
+        </ul>
   </form>
 {% endblock %}

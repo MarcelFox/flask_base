@@ -1,12 +1,15 @@
 from base_app.models import Profile
-from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField
+from flask_wtf import FlaskForm, RecaptchaField
+from wtforms import StringField, PasswordField, BooleanField, SubmitField
 from wtforms.validators import InputRequired
 from werkzeug.security import check_password_hash
 
 class LoginForm(FlaskForm):
     username = StringField('Username', validators=[InputRequired(message='A username is required.')])
     password = PasswordField('Password', validators=[InputRequired(message='A Password is required.')])
+    remember = BooleanField('Remember me')
+    submit = SubmitField('Sign In')
+    recaptcha = RecaptchaField()
 
     def __init__(self, *args, **kwargs):
         FlaskForm.__init__(self, *args, **kwargs)

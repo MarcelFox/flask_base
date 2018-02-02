@@ -50,7 +50,7 @@ q_var = Profile.query.filter_by(username='Tester').first()
 
 
 DummyData2 = Profile(
-    username = 'marcelfox',
+    username = 'tester2',
     password = generate_password_hash('1q2w3e4r'),
     firstName='Test2',
     surName='User2',

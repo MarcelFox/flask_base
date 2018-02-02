@@ -18,7 +18,12 @@ def login():
     
     if form.validate_on_submit():
         user = Profile.query.filter_by(username=form.username.data).first()
-        login_user(user)
+            
+        if form.remember is True:
+            login_user(user, remember=True, duration=timedelta(minutes=30))
+        else:
+            login_user(user)
+        
         return redirect(url_for('admin'))
     
     return render_template(
