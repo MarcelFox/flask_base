@@ -3,6 +3,10 @@
 {{ title }}
 
 {% block content %}
-    <h2>Welcome {{ username }}, to your admin test page!</h2>
+    <p>
+        <h2>Welcome {{ user.firstName }} {{ user.surName }}, to your admin test page!</h2>
+        <h3>Your email is: {{ user.email }}</h3>
+        <h3>Bio:<br>{{ user.description }}</h3>
+    </p>
 <p><a href="/logout">Logout</a></p>
 {% endblock %}

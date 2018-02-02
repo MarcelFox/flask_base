@@ -25,17 +25,17 @@ db.create_all()
 
 # Add some information:
 DummyData = Profile(
-    username = 'Tester',
+    username = 'tester1',
     password = generate_password_hash('1q2w3e4r'),
-    firstName='Test',
-    surName='User',
-    description='I am a dummy data on your database',
-    email='test@uwsgi.dom',
+    firstName='Test1_first_name',
+    surName='Test1_sur_name',
+    description='I am the first dummy data on your database',
+    email='test1@uwsgi.dom',
 )
 
 
 # Check if DummyData exists, if not, insert the DummyData content:
-if Profile.query.filter_by(email='test@uwsgi.dom').first() is None:
+if Profile.query.filter_by(email='test1@uwsgi.dom').first() is None:
     db.session.add(DummyData)
     db.session.commit()
 
@@ -52,13 +52,13 @@ q_var = Profile.query.filter_by(username='Tester').first()
 DummyData2 = Profile(
     username = 'tester2',
     password = generate_password_hash('1q2w3e4r'),
-    firstName='Test2',
-    surName='User2',
-    description='I am a dummy2 data on your database',
-    email='test@uwsgi.dom2',
+    firstName='Test2_first_name',
+    surName='Test2_sur_name',
+    description='I am the second dummy data on your database',
+    email='test2@uwsgi.dom',
 )
 
-if Profile.query.filter_by(email='test@uwsgi.dom2').first() is None:
+if Profile.query.filter_by(email='test2@uwsgi.dom').first() is None:
     db.session.add(DummyData2)
     db.session.commit()
 

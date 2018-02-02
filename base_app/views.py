@@ -40,7 +40,7 @@ def admin():
     return render_template(
     'admin.html',
     title = 'Admin',
-    username = current_user.username
+    user = current_user
     )
 
 @app.route('/logout')
