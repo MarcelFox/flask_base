@@ -8,8 +8,10 @@ from flask_login import login_user, login_required, logout_user, current_user
 def index():
     return render_template(
 	'index.html',
-	hello = "Hello You!"  # Jinja2 working variables
-	)		      # check the index.html who is {{ hello }} =)
+	hello = "Hello You!",  # Jinja2 working variables
+			      # check the index.html who is {{ hello }} =)
+    user = current_user
+    )
 
 
 @app.route('/login', methods=['GET', 'POST'])

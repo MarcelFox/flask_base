@@ -14,11 +14,21 @@
   <div class=navbar>
     <ul>
       <li><a href="/">Home</a></li>
-      <li><a href="/login">Login</a></li>
+      <li>
+        {% if current_user.is_authenticated %}
+        <a href="/logout">Logout</a></li>
+        {% else %}
+        <a href="/login">Login</a></li>
+        {% endif %}
     </ul>
   </div>
   <br>
-  <p><h2>{{ hello }}</h2></p>
+  <p>
+    {% if current_user.is_authenticated %}
+    <h2>{{ hello }} {{ current_user.username }}</h2></p>
+    {% else %}
+    <h2>{{ hello }}</h2></p>
+    {% endif %}
   <!-- block for inherit templates -->
   {% block content %}{% endblock %}
 </body>
