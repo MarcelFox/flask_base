@@ -1,7 +1,7 @@
 from flask import render_template, flash, redirect, url_for, request 
-from base_app import app, login_manager
-from base_app.models import Profile
-from .forms import LoginForm
+from flask_base import app, login_manager
+from models import Profile
+from forms import LoginForm
 from flask_login import login_user, login_required, logout_user, current_user
 
 @app.route('/')
