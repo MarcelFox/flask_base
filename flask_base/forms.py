@@ -1,8 +1,10 @@
-from base_app.models import Profile
+
+from werkzeug.security import check_password_hash
+from flask_base.models import Profile
 from flask_wtf import FlaskForm, RecaptchaField
 from wtforms import StringField, PasswordField, BooleanField, SubmitField
 from wtforms.validators import InputRequired
-from werkzeug.security import check_password_hash
+
 
 class LoginForm(FlaskForm):
     username = StringField('Username', validators=[InputRequired(message='A username is required.')])
@@ -21,7 +23,7 @@ class LoginForm(FlaskForm):
             return False
 
         user = Profile.query.filter_by(
-                username=self.username.data).first()
+            username=self.username.data).first()
         if user is None:
             self.username.errors.append('Unknown Username')
             return False
@@ -31,4 +33,4 @@ class LoginForm(FlaskForm):
             return False
 
         self.user = user
-        return True 
+        return True
