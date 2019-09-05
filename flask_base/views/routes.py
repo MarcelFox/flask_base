@@ -1,27 +1,31 @@
-from flask import render_template, flash, redirect, url_for, request 
-from flask_base import app
-from flask_base.models import Profile, login_manager
-from flask_base.forms import LoginForm
-from flask_login import login_user, login_required, logout_user, current_user
+
 from datetime import timedelta
+from flask import render_template, redirect, url_for, Blueprint
+from flask_login import login_user, login_required, logout_user, current_user
+from forms import LoginForm
+from .models import Profile
+
+# !!! 'routes' is a ugly name, the correct is to separate all of those routes into their own files
+routes = Blueprint('routes', __name__)
+
 
 #   a simple page that says hello
-@app.route('/')
+@routes.route('/')
 def hello():
     return 'Hello, World!'
 
 
-# @app.route('/')
-# def index():
-#     return render_template(
-#         'index.html',
-#         hello="Hello You!",  # Jinja2 working variables
-#         # check the index.html who is {{ hello }} =)
-#         user=current_user
-#     )
+@routes.route('/')
+def index():
+    return render_template(
+        'index.html',
+        hello="Hello You!",  # Jinja2 working variables
+        # check the index.html who is {{ hello }} =)
+        user=current_user
+    )
 
 
-@app.route('/login', methods=['GET', 'POST'])
+@routes.route('/login', methods=['GET', 'POST'])
 def login():
     form = LoginForm()
 
@@ -43,7 +47,7 @@ def login():
 
 
 
-@app.route('/admin', methods=['GET', 'POST'])
+@routes.route('/admin', methods=['GET', 'POST'])
 @login_required
 def admin():
     return render_template(
@@ -52,7 +56,7 @@ def admin():
     user = current_user
     )
 
-@app.route('/logout')
+@routes.route('/logout')
 @login_required
 def logout():
     logout_user()

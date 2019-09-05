@@ -1,9 +1,9 @@
 
 from werkzeug.security import check_password_hash
-from flask_base.models import Profile
 from flask_wtf import FlaskForm, RecaptchaField
 from wtforms import StringField, PasswordField, BooleanField, SubmitField
 from wtforms.validators import InputRequired
+from .models import Profile
 
 
 class LoginForm(FlaskForm):
