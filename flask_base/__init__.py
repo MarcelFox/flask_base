@@ -1,13 +1,12 @@
-
-# flask_base.__init__
-
-from flask import Flask
-
+from flask import Flask, render_template
 
 def create_app():
-    from . import models, services, views
     app = Flask(__name__)
-    models.init_app(app)
-    views.init_app(app)
-    services.init_app(app)
+
+    app.config.from_object('config')
+
+    @app.route('/')
+    def index():
+        return render_template('index.html', title='Home')
+
     return app
