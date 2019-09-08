@@ -9,9 +9,8 @@ def init_app(app):
     db.init_app(app)
     
     with app.app_context():
-        try:
-            User.query.filter_by(username='admin').first()
-        except:
+        user = User.query.filter_by(username='admin').first()
+        if user is None:
             db.session.add(admin)
             db.session.commit()
         
