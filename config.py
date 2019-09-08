@@ -1,5 +1,8 @@
 
-import os, sys
+import os, sys, logging
+
+logging.basicConfig(filename='info.log', format='%(pathname)s at line %(lineno)d: %(message)s', level=logging.INFO)
+logging.StreamHandler(stream=sys.stdout)
 
 try: 
     SECRET_KEY = os.environ['SECRET_KEY']
