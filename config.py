@@ -1,4 +1,3 @@
-
 import os, sys, logging
 
 logging.basicConfig(filename='info.log', format='%(pathname)s at line %(lineno)d: %(message)s', level=logging.INFO)
@@ -19,3 +18,4 @@ except:
 
 
 SQLALCHEMY_TRACK_MODIFICATIONS='False'
+

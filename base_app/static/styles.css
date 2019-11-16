@@ -1,0 +1,13 @@
+*       {
+    margin: 0;
+    padding: 0;
+    }
+
+div.navbar ul{
+    list-style:none;
+    }
+
+div.navbar li{
+    float: left;
+    padding-right: 10px;
+    }
