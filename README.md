@@ -96,7 +96,9 @@ unset DATABASE_URL
 
 
 ### Run!
-uwsgi --ini="uwsgi.ini"
+```
+(venv)$ uwsgi --ini="uwsgi.ini"
+```
 
 Now your application will be accessible on:
 http://localhost:8080/
