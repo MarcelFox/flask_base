@@ -1,9 +1,0 @@
-{% macro login_field(field) %}
-<p>{{ field.label }}:</p>
-{{ field(**kwargs)|safe }}
-    <ul>
-    {% for error in field.errors %}
-        <li>{{ error }}</li>
-    {% endfor %}
-    </ul>
-{% endmacro %}
