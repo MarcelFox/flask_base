@@ -1,7 +1,7 @@
 from flask import Blueprint, render_template
 from flask import current_app as app
-from flask_base import db
-from flask_base.models.User import User
+from App import db
+from App.models.User import User
 
 
 index = Blueprint('index', __name__)
