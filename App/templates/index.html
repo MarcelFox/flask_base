@@ -1,15 +1,15 @@
+{% extends 'base.html' %}
 
-{% include 'base.html' %}
-
+{% block container %}
 <div class="card">
-        <div class="card-body">
-          Here goes our Jinja2 working:
-        
-          <ul style="padding-top: 10px;">
-            <li>Username: {{ user.username }}</li>
-            <li>Admin: {{ user.username }}</li>
-          </ul>
-          
-        </div>
-      </div>
-
+    <div class="card-body">
+      Here goes our Jinja2 workings:
+    
+      <ul style="padding-top: 10px;">
+        <li>Username: {{ user.username }}</li>
+        <li>Admin: {{ user.username }}</li>
+      </ul>
+      <p> lol</p>
+    </div>
+  </div>
+{% endblock container %}
