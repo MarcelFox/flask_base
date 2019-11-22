@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block container %}
+<br>
+<div class="gameinfo">
+    <ul class="list-group">
+        <li id="title" class="list-group-item active">21 AJAX!</li>
+        <li id="game"class="list-group-item">{{ result }}</li>
+        <li id="tip" class="list-group-item">{{ tip }}</li>
+      </ul>
+      <br>
+      <button id="addTip" id="addTip" type="button" class="btn btn-primary">Add Tip</button>
+</div>
+{% endblock container %}
