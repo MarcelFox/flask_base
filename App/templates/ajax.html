@@ -5,10 +5,12 @@
 <div class="gameinfo">
     <ul class="list-group">
         <li id="title" class="list-group-item active">Blackjack AJAX!</li>
-        <li id="title" class="list-group-item">Table:</li>
-        <li id="game"class="list-group-item">{{ result }}</li>
-        <li id="title" class="list-group-item">You:</li>
-        <li id="hit" class="list-group-item">{{ hit }}</li>
+        <li id="title" class="list-group-item">Table Score: <span id='tbScore'>{{ tbScore }}</span></li>
+        <li id="game"class="list-group-item">
+          <span id=tbCard1>{{ tableCard1 }}</span><span id=tbCard2>{{ tableCard2.name }}</span></li>
+        <li id="title" class="list-group-item">Your Score: <span id='plScore'>{{ plScore }}</span></li>
+        <li id="hit" class="list-group-item">
+          <span id=plCard1>{{ playerCard1.name }}</span><span id=plCard2>{{ playerCard2.name }}</span></li>
       </ul>
       <br>
       <button id="addHit" id="addHit" type="button" class="btn btn-primary">Hit!</button>

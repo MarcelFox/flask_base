@@ -3,12 +3,34 @@ $(document).ready(function () {
 
         let playerOldValue = $('#hit').text()
 
-        if ($('#game').text() == '?') {
-            $.get('/gethit', e => {$("#game").html(e.name)})
+        if ($('#tbCard1').text() == '?') {
+            $.get('/gethit', e => {
+                $("#tbCard1").html(e.name)
+                    (e.value)
+            })
+
         } else {
-            let tableOldValue = $('#game').text()
-            $.get('/gethit', e => {$("#game").html(tableOldValue + e.name)})
+            let tbOldValue = $('#game').text()
+            $.get('/gethit', e => { $("#game").html(tbOldValue + e.name) })
         }
+
+        $.get('/getCardValue', { 'value': $('#hit').text().slice(-2, -1) }).done(e => {
+            scndLastValue = parseInt(e)
+            $.get('/getCardValue', { 'value': $('#hit').text().slice(-1) }).done(e => {
+                lastValue = parseInt(e)
+
+                $.get('/getCardValue', { 'value': $('#hit').text().slice(-1) }).done(e => {
+                    let plScore = $("#plScore").text()
+
+                    let value = (parseInt(plScore) + parseInt(e))
+                    $("#plScore").html(value)
+
+                })
+            })
+
+
+        })
+
 
         $.ajax({
             url: "/gethit",
@@ -19,7 +41,6 @@ $(document).ready(function () {
                 //     let 
                 //     $("#hit").html(card);
                 // }
-                console.log(card.value)
                 $("#hit").html(hit);
             }
         });
