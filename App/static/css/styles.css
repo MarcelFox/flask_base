@@ -1,0 +1,14 @@
+@font-face {
+    font-family: RoyalCards;
+    src: url("../fonts/CARDS.TTF");
+  }
+
+li#game.list-group-item {
+    font-size: 80px;
+    font-family: RoyalCards;
+}
+
+li#hit.list-group-item {
+    font-size: 80px;
+    font-family: RoyalCards;
+}

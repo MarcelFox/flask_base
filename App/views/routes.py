@@ -1,8 +1,10 @@
-import random
 from flask import Blueprint, render_template
 from flask import current_app as app
 from App import db
 from App.models.User import User
+
+#for blackjack:
+import random, string
 
 
 index = Blueprint('index', __name__)
@@ -28,15 +30,40 @@ def main_page():
 
 @index.route('/ajax')
 def ajax():
-    result = 0
-    tip = 0
-    return render_template('ajax.html', result=result, tip=tip)
+    result = '?'
+    hit = '?'
+    return render_template('ajax.html', result=result, hit=hit)
 
 
-@index.route('/getTip')
-def getTip():
-    tip = random.randrange(11)
-    return str(tip)
+@index.route('/gethit')
+def getHit():
+    # https://py3.codeskulptor.org/#user304_TemoFkvS1X_0.py
+    cards = {
+        1: ['A', 'N', 'a', 'n'],
+        2: ['B', 'O', 'b', 'o'],
+        3: ['C', 'P', 'c', 'p'],
+        4: ['D', 'Q', 'd', 'q'],
+        5: ['E', 'R', 'e', 'r'],
+        6: ['F', 'S', 'f', 's'],
+        7: ['G', 'T', 'g', 't'],
+        8: ['H', 'U', 'h', 'u'],
+        9: ['I', 'V', 'i', 'v'],
+        # ['J', 'W', 'j', 'w'],
+        # ['K', 'X', 'k', 'x'],
+        # ['L', 'Y', 'l', 'y'],
+        # ['M', 'Z', 'm', 'z']
+    }
+    cardName = random.choice(string.ascii_letters)
+    for i in cards:
+        if cardName in cards[i]:
+            cardValue = i
+            break
+        else:
+            cardValue = 10
+
+    card = {'name': cardName, 'value': cardValue}
+
+    return card
 
 
 app.register_blueprint(index)

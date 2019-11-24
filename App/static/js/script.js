@@ -1,20 +1,30 @@
 $(document).ready(function () {
-    $("#addTip").click(function () {
+    $("#addHit").click(function () {
 
-        let test = ('PRAISE THE SUN')
-        let oldValue = $('#tip').text()
+        let playerOldValue = $('#hit').text()
+
+        if ($('#game').text() == '?') {
+            $.get('/gethit', e => {$("#game").html(e.name)})
+        } else {
+            let tableOldValue = $('#game').text()
+            $.get('/gethit', e => {$("#game").html(tableOldValue + e.name)})
+        }
 
         $.ajax({
-            url: "/getTip",
+            url: "/gethit",
             method: 'GET',
-            success: function (result) {
-                console.log(test)
-                console.log(oldValue)
-                console.log(result)
-                $("#tip").html(result);
+            success: function (card) {
+                let hit = (playerOldValue + card.name)
+                // if (hit == 21){
+                //     let 
+                //     $("#hit").html(card);
+                // }
+                console.log(card.value)
+                $("#hit").html(hit);
             }
         });
 
 
     });
 });
+
