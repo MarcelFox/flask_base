@@ -23,12 +23,16 @@ $(document).ready(function () {
                     let plScore = $("#plScore").text()
 
                     let value = (parseInt(plScore) + parseInt(e))
+                    if (value > 21) {
+                        $("#plStatus").html('YOU LOSE: '+value)
+                        $("#addHit").prop("disabled", true);
+                    } else if (value == 21){
+                        $("#plStatus").html('YOU WIN: '+value)
+                        $("#addHit").prop("disabled", true);
+                    }
                     $("#plScore").html(value)
-
                 })
             })
-
-
         })
 
 
