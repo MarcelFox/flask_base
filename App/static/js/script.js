@@ -39,6 +39,7 @@ $(document).ready(function () {
 
     $("#stand").click(function () {
         let count = 1
+        $("#addHit").prop("disabled", true);
 
         if ($('#tbCard1').text() == '?') {
             $.get('/gethit', e => {
