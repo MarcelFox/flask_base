@@ -14,10 +14,24 @@ $(document).ready(function () {
                     let value = (parseInt(plScore) + parseInt(e))
                     if (value > 21) {
                         $("#plStatus").html('YOU LOSE!')
+                        $("#tbStatus").html('TABLE WIN!')
                         $("#addHit").prop("disabled", true);
+                        $("#stand").prop("disabled", true);
+                        if ($('#tbCard1').text() == '?') {
+                            $.get('/gethit', e => {
+                                $("#tbCard1").html(e.name)
+                            })
+                        }
                     } else if (value == 21) {
                         $("#plStatus").html('YOU WIN!')
+                        $("#tbStatus").html('TABLE LOSE!')
                         $("#addHit").prop("disabled", true);
+                        $("#stand").prop("disabled", true);
+                        if ($('#tbCard1').text() == '?') {
+                            $.get('/gethit', e => {
+                                $("#tbCard1").html(e.name)
+                            })
+                        }
                     }
                     $("#plScore").html(value)
                 })
@@ -40,6 +54,7 @@ $(document).ready(function () {
     $("#stand").click(function () {
         let count = 1
         $("#addHit").prop("disabled", true);
+        $("#stand").prop("disabled", true);
 
         if ($('#tbCard1').text() == '?') {
             $.get('/gethit', e => {
@@ -80,19 +95,18 @@ $(document).ready(function () {
                         if ($("#tbScore").text() > 21) {
                             $("#tbStatus").html('TABLE LOSE!')
                             $("#plStatus").html('YOU WIN!')
-                            $("#stand").prop("disabled", true);
                         } else if ($("#tbScore").text() == 21) {
                             $("#tbStatus").html('TABLE WIN!')
                             $("#plStatus").html('YOU LOSE!')
-                            $("#stand").prop("disabled", true);
                         } else if ($("#tbScore").text() < 21 && ($("#tbScore").text() > $("#plScore").text())) {
                             $("#tbStatus").html('TABLE WIN!')
                             $("#plStatus").html('YOU LOSE!')
-                            $("#stand").prop("disabled", true);
                         }  else if ($("#tbScore").text() < 21 && ($("#tbScore").text() < $("#plScore").text())) {
                             $("#tbStatus").html('TABLE LOSE!')
                             $("#plStatus").html('YOU WIN!')
-                            $("#stand").prop("disabled", true);
+                        }  else if ($("#tbScore").text() == $("#plScore").text()) {
+                            $("#tbStatus").html('DRAW!')
+                            $("#plStatus").html('DRAW!')
                         }
                     }
                     }, 800);
@@ -104,7 +118,10 @@ $(document).ready(function () {
         })
 
     })
-    console.log($('#tbCard1').text())
+    
+    $('#reload').click(function() {
+        location.reload();
+    });
 
 
 
